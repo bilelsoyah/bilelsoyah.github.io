@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h3>Bilel Soyah</h3>
+  <h4>Tunisian/Cambodian graphic designer</h4>
+  <h4>based in Amiens, France.</h4>
+  <h4>Currently studying at ESAD Amiens.</h4>
+  <a href="about.html" style="font-size: inherit; padding-left: 1350px; padding-top: 150px;"></a>
+</body>
+<footer>
+  <div class="line">
+    <div class="line-content">
+      <a href="barcelona.html" style="display: flex; align-items: center;">
+      24h in Barcelona <img src="Barcelone_1.webp" style="height: 1em; margin-right: 0.1em; margin-left: 0.5rem;"> ,</a>
+      <a href="goulette.html" style="display: flex; align-items: center;">
+      Goulette sur Seine <img src="Tunis.webp" style="height: 1em; margin-right: 0.1em; margin-left: 0.5rem;" >,</a>
+      <a href="amsterdam.html" style="display: flex; align-items: center;">
+      24H in Amsterdam <img src="Amesterdam.webp" style="height: 1em; margin-right: 0.1em; margin-left: 0.5rem;" >,</a>
+      <a href="brussels.html" style="display: flex; align-items: center;">
+      24H in Brussels<img src="Bruxelle.webp" style="height: 1em; margin-right: 0.1em; margin-left: 0.5rem;" >.</a>
+    </div>
+  </div>
+
+  <!-- Autres lignes -->
+  <div class="line">
+    <div class="line-content">
+      <a href="modele-vivant.html">Modèle Vivant<img src="Capture d’écran 2024-11-12 à 14.09.31.webp" style="height: 1em; margin-right: 0.1em; margin-left: 0.5rem;">,</a>
+      <a href="zoo-amiens-metropole.html">Pinguin Groove Festival<img src="Capture d’écran 2024-11-21 à 20.08.34.webp" style="height: 1em; margin-right: 0.1em; margin-left: 0.5rem;" >.</a>
+    </div>
+  </div>
+  </div>
+
+  <div class="line">
+    <div class="line-content">
+      <a href="william-keo.html"><span>William Keo <img src="wILLIAM.webp" style="height: 1em; margin-right: 0.1em; margin-left: 0.5rem;" >,</span></a>
+      <a href="radio-team.html"><span>Radio Team <img src="RADIOTEAM.webp" style="height: 1em; margin-right: 0.1em; margin-left: 0.5rem;" >,</span></a>
+      <a href="speak-up.html"><span>Speak Up <img src="SPEAKUP.webp" style="height: 1em; margin-right: 0.1em; margin-left: 0.5rem;" >,</span></a>
+      <a href="lycee-les-berges-du-lac.html"><span>Tunisian Beautiful Minds <img src="TUNISIAN.webp" style="height: 1em; margin-right: 0.1em; margin-left: 0.5rem;" >,</span></a>
+      <a href="edufrance.html"><span>EduFrance <img src="edufrance.webp" style="height: 1em; margin-right: 0.1em; margin-left: 0.5rem;" >.</span></a>
+    </div>
+    </div>
+  </div>
+  </div>
+  
+
+
+
+ 
+</footer>
+<script>
+  document.querySelectorAll('.line').forEach(line => {
+    const content = line.querySelector('.line-content');
+    
+    let position = 0;
+    let direction = 1;
+    let isHovered = false;
+    let targetSpeed = 0;
+    let currentSpeed = 0;
+    const maxSpeed = 13; // Maximum speed for smoothness
+    
+    function updatePosition() {
+      // Smooth transition towards target speed
+      currentSpeed += (targetSpeed - currentSpeed) * 0.05;
+      position += direction * currentSpeed;
+      content.style.transform = `translateX(${position}px)`;
+      
+      // Loop content for continuous effect
+      if (position > line.offsetWidth) position = -content.offsetWidth;
+      if (position < -content.offsetWidth) position = line.offsetWidth;
+      
+      requestAnimationFrame(updatePosition);
+    }
+
+    line.addEventListener('mousemove', (event) => {
+      const rect = line.getBoundingClientRect();
+      const mouseX = event.clientX - rect.left;
+
+      // Change direction based on cursor position
+      direction = mouseX < rect.width / 2 ? 1 : -1;
+      targetSpeed = maxSpeed; // Set target speed to max when hovered
+    });
+
+    line.addEventListener('mouseenter', () => {
+      isHovered = true;
+      targetSpeed = maxSpeed;
+    });
+
+    line.addEventListener('mouseleave', () => {
+      isHovered = false;
+      targetSpeed = 0; // Set target speed to 0 on unhover
+    });
+
+    // Start the animation loop
+    updatePosition();
+  });
+</script>
+</body>
+</html>

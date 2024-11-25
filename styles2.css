@@ -1,0 +1,11 @@
+body {
+  font-family: "Empira", italic;
+  line-height: 2px;
+  background-color: #d9d2c6;
+  margin: 100px;
+}
+div {
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
