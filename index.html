@@ -69,7 +69,7 @@
     
     function updatePosition() {
       // Smooth transition towards target speed
-      currentSpeed += (targetSpeed - currentSpeed) * 0.05;
+      currentSpeed += (targetSpeed - currentSpeed) * 0.010;
       position += direction * currentSpeed;
       content.style.transform = `translateX(${position}px)`;
       
